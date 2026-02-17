@@ -1,0 +1,70 @@
+---
+title: 'Self Hosting'
+description: 'Host your own instance of Null Board.'
+icon: 'server'
+---
+
+<Warning>
+  **Experimental**: Self-hosting features are currently experimental and documentation is being actively developed.
+</Warning>
+
+## Requirements
+
+- **Node.js**: v18 or higher
+- **Valkey**: For real-time collaboration features (optional for local-only mode)
+
+## Docker Deployment (coming soon)
+
+
+## Manual Deployment
+
+### 1. Main Application
+
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/Null-Tools-Open/nullboard.git
+    cd nullboard
+    ```
+
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
+
+3.  Build the application:
+    ```bash
+    npm run build
+    ```
+
+4.  Start the application:
+    ```bash
+    npm start
+    ```
+
+Access your instance at `http://localhost:3000`.
+
+### 2. Collaboration Server (Optional)
+
+<Note>
+    For collaboration features to work, you need to run our "proxy" server, **draw**.
+</Note>
+
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/Null-Tools-Open/draw.git
+    cd draw
+    ```
+
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
+
+3.  Start the server:
+    ```bash
+    npm start
+    ```
+
+<Note>
+    You can find more information about our server architecture in the [Architecture](link-to-architecture-page) page.
+</Note>

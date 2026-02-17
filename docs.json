@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Nullboard Docs",
+  "name": "Null Board Docs",
   "colors": {
     "primary": "#16A34A",
     "light": "#07C983",
@@ -11,7 +11,7 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "NullBoard",
+        "tab": "Null Board",
         "groups": [
           {
             "group": "Getting Started",
@@ -52,12 +52,43 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "For Developers",
+        "groups": [
+          {
+            "group": "Guides",
+            "pages": [
+              "developers/self-hosting",
+              "developers/contributing"
+            ]
+          },
+          {
+            "group": "Integration",
+            "pages": [
+              "developers/iframe",
+              "developers/api"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Resources",
+        "groups": [
+          {
+            "group": "General",
+            "pages": [
+              "resources/faq",
+              "resources/changelog"
+            ]
+          }
+        ]
       }
     ]
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/nullboard.png",
+    "dark": "/logo/nullboard.png"
   },
   "footer": {
     "socials": {
