@@ -1,0 +1,53 @@
+---
+title: 'Usage Guide'
+description: 'Learn how to capture strokes and configure training.'
+icon: 'book-open'
+---
+
+## Capturing Strokes
+`Ink` provides a stroke management system that easily integrates with standard HTML5 Canvas events.
+
+```typescript
+const canvas = document.getElementById('myCanvas');
+const ink = new Ink();
+let isDrawing = false;
+
+canvas.addEventListener('mousedown', (e) => {
+  isDrawing = true;
+  // Start tracking a new stroke
+  const stroke = ink.startStroke();
+  stroke.addPoint(e.offsetX, e.offsetY);
+});
+
+canvas.addEventListener('mousemove', (e) => {
+  if (!isDrawing) return;
+  // Add points to the active stroke
+  const strokes = ink.getStrokes();
+  const currentStroke = strokes[strokes.length - 1];
+  currentStroke.addPoint(e.offsetX, e.offsetY);
+  
+  // (Optional) Draw to canvas context here for visual feedback
+});
+
+canvas.addEventListener('mouseup', () => {
+  isDrawing = false;
+});
+```
+
+## Auto-Training Options
+You can customize how the library trains itself via the `InkOptions` object passed to the constructor.
+
+```typescript
+const ink = new Ink({
+  auto: true,                // Enable auto-training (default: true)
+  autoEpochs: 20,            // Increase epochs for potentially better accuracy
+  autoAugmentFactor: 5,      // Generate more variations of sample data
+  onTrainProgress: (epoch, total, logs) => {
+    console.log(`Training progress: ${Math.round(epoch / total * 100)}%`);
+  }
+});
+```
+
+<Tip>
+  **Performance Note**: Auto-training happens on the main thread in this version. For complex applications, consider running training during an initialization phase or loading screen.
+</Tip>

@@ -11,13 +11,44 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Documentation",
+        "tab": "NullBoard",
         "groups": [
           {
-            "group": "Projects",
+            "group": "Getting Started",
             "pages": [
-              "nullboard",
-              "ink"
+              "nullboard/index"
+            ]
+          },
+          {
+            "group": "Features",
+            "pages": [
+              "nullboard/features",
+              "nullboard/tools",
+              "nullboard/customization"
+            ]
+          },
+          {
+            "group": "Reference",
+            "pages": [
+              "nullboard/shortcuts"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Ink Library",
+        "groups": [
+          {
+            "group": "Guide",
+            "pages": [
+              "ink/index",
+              "ink/usage"
+            ]
+          },
+          {
+            "group": "API Reference",
+            "pages": [
+              "ink/api-reference"
             ]
           }
         ]

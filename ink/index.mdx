@@ -1,0 +1,51 @@
+---
+title: 'Introduction'
+description: 'Get started with the @impulsedev/ink library.'
+icon: 'pen-nib'
+---
+
+<img className="block dark:hidden" src="/logo/ink.png" alt="Ink Logo" width="200" />
+<img className="hidden dark:block" src="/logo/ink.png" alt="Ink Logo" width="200" />
+
+**@impulsedev/ink** is a specialized library designed to recognize handwritten digits and mathematical operators directly in the browser. It features a unique **client-side auto-training** capability, allowing it to adapt and learn without heavy server-side models.
+
+## Key Features
+
+- **Math Recognition**: accurate detection of digits (0-9) and operators (+, -, *, /, =).
+- **Auto-Training**: The library can train its own lightweight CNN model in the browser using bundled sample data. Zero server configuration required.
+- **Expression Evaluation**: Automatically parses recognized characters into valid mathematical expressions and calculates the result.
+- **Stroke Management**: Built-in tools for capturing, storing, and manipulating handwriting strokes.
+- **TypeScript Support**: Fully typed for a robust development experience.
+
+## Installation
+
+Install the package via npm:
+
+```bash
+npm install @impulsedev/ink
+```
+
+## Quick Start
+
+Here is a minimal example to initialize the library and recognize a simple drawing.
+
+```typescript
+import { Ink } from '@impulsedev/ink';
+
+// Initialize Ink
+// By default, this starts the auto-training process in the background
+const ink = new Ink();
+
+// Wait for the model to be ready (trains or loads)
+await ink.loadModel();
+
+// ... (Integration with your canvas to capture strokes) ...
+
+// Recognize the current drawing
+const result = await ink.recognize();
+
+if (result.valid) {
+  console.log(`Expression: ${result.expression}`); // Output: "2 + 2"
+  console.log(`Result: ${result.result}`);         // Output: 4
+}
+```

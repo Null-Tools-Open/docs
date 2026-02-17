@@ -1,0 +1,43 @@
+---
+title: 'API Reference'
+description: 'Detailed documentation for the Ink class and types.'
+icon: 'code'
+---
+
+## `Ink` Class
+
+### `constructor(options?: InkOptions)`
+Creates a new instance of the Ink recognition engine.
+
+**`InkOptions` Properties:**
+- `auto` (boolean): Whether to automatically train the model on load.
+- `modelUrl` (string): Path to a pre-trained TensorFlow.js model JSON file (disables auto-training if provided).
+- `trainingData` (Record): Custom data to train on.
+- `onTrainProgress` (function): Callback for monitoring training status.
+
+### `loadModel(): Promise<void>`
+Initializes the model. If `auto` is true, this triggers the training process using bundled data.
+
+### `isReady(): boolean`
+Returns `true` if the model is trained/loaded and ready to recognize input.
+
+### `startStroke(): Stroke`
+Creates a brand new stroke and returns it. Future points should be added to this object.
+
+### `undo(): Stroke | undefined`
+Removes the most recently added stroke from the internal history. Useful for building "Undo" UI buttons.
+
+### `clear(): void`
+Resets the internal state, removing all strokes.
+
+### `recognize(): Promise<InkResult>`
+asynchronously processes all current strokes and returns the recognition result.
+
+## `InkResult` Interface
+
+The object returned by `recognize()` contains:
+
+- **`expression`** (`string`): The normalized mathematical expression (e.g., "1 + 2").
+- **`result`** (`number | null`): The evaluated result of the expression.
+- **`valid`** (`boolean`): `true` if the input was successfully parsed as valid math.
+- **`characters`** (`RecognitionResult[]`): Array containing confidence scores and bounding boxes for each recognized symbol.
